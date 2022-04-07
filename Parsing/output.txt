@@ -1,0 +1,11 @@
+St -> main ( ) {  . statements } 
+statements ->  . %empty 
+statements ->  . statement ; statements 
+statement ->  . dec_st 
+statement ->  . math_st 
+statement ->  . if_st 
+statement ->  . %empty 
+if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+dec_st ->  . dtype d_prod 
