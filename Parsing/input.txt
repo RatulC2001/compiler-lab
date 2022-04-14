@@ -35,7 +35,7 @@ FAC : "NUMBER" ;
 FAC : "CHARACTER" ;
 FAC : "(" VALUE ")" ;
 
-33
+35
 
 "main"
 "("
@@ -65,6 +65,8 @@ FAC : "(" VALUE ")" ;
 "NUMBER"
 "addop"
 "NUMBER"
+"o_cas"
+"CHARACTER"
 ";"
 "}"
 ";"

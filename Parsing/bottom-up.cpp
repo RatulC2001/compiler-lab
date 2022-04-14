@@ -382,6 +382,7 @@ void repr(stack <int> st, vector <sym> &symbols, vector <sym> &term_list)
     for(sym s : symbols)
     cout << s << " ";
     cout << endl;
+    cout << "INPUT : ";
     for(int i = (int)(term_list.size()) - 1; i >= 0; i --) cout << term_list[i] << " ";
     cout << endl;
     cout << endl;
