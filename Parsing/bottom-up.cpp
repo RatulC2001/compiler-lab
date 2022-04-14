@@ -24,6 +24,96 @@ struct sym
     {
         return s[0]=='"';
     }
+
+    vector <sym> follow()
+    {
+        vector <sym> ret;
+
+        if(s == "statements")
+        {
+            ret.push_back(sym("\"}\""));
+        }
+        else if(s == "statement")
+        {
+            ret.push_back(sym("\";\""));
+        }
+        else if(s == "dec_st")
+        {
+            ret.push_back(sym("\";\""));
+        }
+        else if(s == "math_st")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\",\""));
+        }
+        else if(s == "io")
+        {
+            ret.push_back(sym("\";\""));
+        }
+        else if(s == "if_st")
+        {
+            ret.push_back(sym("\";\""));
+        }        
+        else if(s == "d_prod")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\",\""));
+        }
+        else if(s == "d_nat")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\",\""));
+        }
+        else if(s == "VALUE")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\",\""));
+            ret.push_back(sym("\")\""));
+            ret.push_back(sym("\"o_cas\""));
+            ret.push_back(sym("\"comp_op\""));
+            ret.push_back(sym("\"add_op\""));
+        }
+        else if(s == "inp")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\"i_cas\""));
+        }
+        else if(s == "opt")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\"o_cas\""));
+        }
+        else if(s == "comp_st")
+        {
+            ret.push_back(sym("\")\""));
+        }
+        else if(s == "CONT")
+        {
+            ret.push_back(sym("\";\""));
+        }
+        else if(s == "TERM")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\",\""));
+            ret.push_back(sym("\")\""));
+            ret.push_back(sym("\"o_cas\""));
+            ret.push_back(sym("\"comp_op\""));
+            ret.push_back(sym("\"add_op\""));
+            ret.push_back(sym("\"mul_op\""));
+        }
+        else if(s == "FAC")
+        {
+            ret.push_back(sym("\";\""));
+            ret.push_back(sym("\",\""));
+            ret.push_back(sym("\")\""));
+            ret.push_back(sym("\"o_cas\""));
+            ret.push_back(sym("\"comp_op\""));
+            ret.push_back(sym("\"add_op\""));
+            ret.push_back(sym("\"mul_op\""));
+        }
+
+        return ret;
+    }
 };
 
 ostream & operator << (ostream &out, const sym &s)
@@ -100,6 +190,9 @@ ostream & operator << (ostream &out, const production &p)
             if(i == p.dot_loc) cout << " . ";
             cout << p.rhs[i] << " "; 
         }
+
+        if(p.dot_loc == p.count_rhs())
+        cout << " . ";
     }
     return out;
 }
@@ -300,6 +393,10 @@ signed main()
     item_list.push_back(is);
 
     generate(is);
+
+    int n = (int)item_list.size();
+
+    for(int i = 0; i < n; i ++) item_list[i].id = i;
 
     for(item_set item : item_list)
     {

@@ -1,0 +1,59 @@
+35
+
+S -> St
+St -> "main" "(" ")" "{" statements "}"
+statements -> epsilon 
+statements -> statement ";" statements 
+statement -> dec_st 
+statement -> math_st 
+statement -> io 
+statement -> if_st 
+statement -> epsilon 
+dec_st -> "dtype" d_prod 
+d_prod -> d_nat 
+d_prod -> d_prod "," d_nat 
+d_nat -> "ID" 
+d_nat -> math_st 
+math_st -> "ID" "equ" VALUE 
+math_st -> "ID" "equ" math_st 
+io -> "input" inp 
+io -> "output" opt 
+
+inp -> "i_cas" "ID" 
+inp -> inp "i_cas" "ID" 
+opt -> "o_cas" VALUE 
+opt -> opt "o_cas" VALUE 
+
+
+if_st -> "if_token" "(" comp_st ")" "then_token" "{" statements "}" CONT 
+CONT -> "else_token" "{" statements "}" 
+CONT -> epsilon 
+comp_st -> VALUE "comp_op" VALUE 
+comp_st -> "(" comp_st ")" "r_o" "(" comp_st ")" 
+VALUE -> VALUE "addop" TERM 
+VALUE -> "addop" TERM 
+VALUE -> TERM 
+TERM -> TERM "mulop" FAC 
+TERM -> FAC 
+FAC -> "ID"
+FAC -> "NUMBER" 
+FAC -> "CHARACTER"
+FAC -> "(" VALUE ")" 
+
+FOLLOW[S] =
+FOLLOW[St] =
+FOLLOW[statements] = "}"
+FOLLOW[statement] = ";"
+FOLLOW[dec_st] = ";"
+FOLLOW[math_st] = ";" ","
+FOLLOW[io] = ";"
+FOLLOW[if_st] = ";"
+FOLLOW[d_prod] = ";" ","
+FOLLOW[d_nat] = ";" ","
+FOLLOW[VALUE] = ")" ";" "," "o_cas" "comp_op" "addop"
+FOLLOW[inp] = ";" "i_cas"
+FOLLOW[opt] = ";" "o_cas"
+FOLLOW[comp_st] = ")"
+FOLLOW[CONT] = ";"
+FOLLOW[TERM] = ")" ";" "," "o_cas" "comp_op" "addop" "mulop"
+FOLLOW[FAC] = ")" ";" "," "o_cas" "comp_op" "addop" "mulop"

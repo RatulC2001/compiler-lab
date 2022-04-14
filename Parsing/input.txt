@@ -1,4 +1,4 @@
-34
+35
 
 S : St
     ;
@@ -8,6 +8,7 @@ statements : %empty ;
 statements : statement ";" statements ;
 statement : dec_st ; 
 statement : math_st ;
+statement : io ;
 statement : if_st ; 
 statement : %empty ; 
 dec_st : "dtype" d_prod ;
@@ -40,3 +41,4 @@ FAC : "ID" ;
 FAC : "NUMBER" ;
 FAC : "CHARACTER";
 FAC : "(" VALUE ")" ;
+
