@@ -38,4 +38,5 @@ TERM : TERM "mulop" FAC ;
 TERM : FAC ;
 FAC : "ID" ;
 FAC : "NUMBER" ;
+FAC : "CHARACTER";
 FAC : "(" VALUE ")" ;

@@ -1,3 +1,17 @@
+I (0)
+S ->  . St 
+St ->  . main ( ) { statements } 
+
+I (1)
+St -> main  . ( ) { statements } 
+
+I (2)
+St -> main (  . ) { statements } 
+
+I (3)
+St -> main ( )  . { statements } 
+
+I (4)
 St -> main ( ) {  . statements } 
 statements ->  . %empty 
 statements ->  . statement ; statements 
@@ -9,3 +23,319 @@ if_st ->  . if_token ( comp_st ) then_token { statements } CONT
 math_st ->  . ID equ VALUE 
 math_st ->  . ID equ math_st 
 dec_st ->  . dtype d_prod 
+
+I (5)
+math_st -> ID  . equ VALUE 
+math_st -> ID  . equ math_st 
+
+I (6)
+math_st -> ID equ  . VALUE 
+math_st -> ID equ  . math_st 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (7)
+FAC -> CHARACTER"  . FAC : ( VALUE ) 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (9)
+FAC -> ID 
+
+I (10)
+FAC -> NUMBER 
+
+I (11)
+FAC -> CHARACTER" FAC  . : ( VALUE ) 
+
+I (12)
+FAC -> CHARACTER" FAC :  . ( VALUE ) 
+
+I (13)
+FAC -> CHARACTER" FAC : (  . VALUE ) 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (17)
+VALUE -> addop  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (21)
+TERM -> FAC 
+
+I (22)
+VALUE -> addop TERM 
+TERM -> TERM  . mulop FAC 
+
+I (23)
+TERM -> TERM mulop  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (27)
+TERM -> TERM mulop FAC 
+
+I (29)
+VALUE -> TERM 
+TERM -> TERM  . mulop FAC 
+
+I (31)
+FAC -> CHARACTER" FAC : ( VALUE  . ) 
+VALUE -> VALUE  . addop TERM 
+
+I (32)
+FAC -> CHARACTER" FAC : ( VALUE ) 
+
+I (33)
+VALUE -> VALUE addop  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (38)
+VALUE -> VALUE addop TERM 
+TERM -> TERM  . mulop FAC 
+
+I (40)
+math_st -> ID  . equ VALUE 
+math_st -> ID  . equ math_st 
+FAC -> ID 
+
+I (46)
+math_st -> ID equ VALUE 
+VALUE -> VALUE  . addop TERM 
+
+I (48)
+math_st -> ID equ math_st 
+
+I (49)
+dec_st -> dtype  . d_prod 
+d_prod ->  . d_nat 
+d_prod ->  . d_prod , d_nat 
+d_nat ->  . ID 
+d_nat ->  . math_st 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+
+I (50)
+d_nat -> ID 
+math_st -> ID  . equ VALUE 
+math_st -> ID  . equ math_st 
+
+I (52)
+d_prod -> d_nat 
+
+I (53)
+dec_st -> dtype d_prod 
+d_prod -> d_prod  . , d_nat 
+
+I (54)
+d_prod -> d_prod ,  . d_nat 
+d_nat ->  . ID 
+d_nat ->  . math_st 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+
+I (56)
+d_prod -> d_prod , d_nat 
+
+I (57)
+d_nat -> math_st 
+
+I (59)
+if_st -> if_token  . ( comp_st ) then_token { statements } CONT 
+
+I (60)
+if_st -> if_token (  . comp_st ) then_token { statements } CONT 
+comp_st ->  . VALUE comp_op VALUE 
+comp_st ->  . ( comp_st ) r_o ( comp_st ) 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (61)
+comp_st -> (  . comp_st ) r_o ( comp_st ) 
+comp_st ->  . VALUE comp_op VALUE 
+comp_st ->  . ( comp_st ) r_o ( comp_st ) 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (69)
+comp_st -> VALUE  . comp_op VALUE 
+VALUE -> VALUE  . addop TERM 
+
+I (71)
+comp_st -> VALUE comp_op  . VALUE 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (78)
+comp_st -> VALUE comp_op VALUE 
+VALUE -> VALUE  . addop TERM 
+
+I (80)
+comp_st -> ( comp_st  . ) r_o ( comp_st ) 
+
+I (81)
+comp_st -> ( comp_st )  . r_o ( comp_st ) 
+
+I (82)
+comp_st -> ( comp_st ) r_o  . ( comp_st ) 
+
+I (83)
+comp_st -> ( comp_st ) r_o (  . comp_st ) 
+comp_st ->  . VALUE comp_op VALUE 
+comp_st ->  . ( comp_st ) r_o ( comp_st ) 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER" FAC : ( VALUE ) 
+
+I (92)
+comp_st -> ( comp_st ) r_o ( comp_st  . ) 
+
+I (93)
+comp_st -> ( comp_st ) r_o ( comp_st ) 
+
+I (101)
+if_st -> if_token ( comp_st  . ) then_token { statements } CONT 
+
+I (102)
+if_st -> if_token ( comp_st )  . then_token { statements } CONT 
+
+I (103)
+if_st -> if_token ( comp_st ) then_token  . { statements } CONT 
+
+I (104)
+if_st -> if_token ( comp_st ) then_token {  . statements } CONT 
+statements ->  . %empty 
+statements ->  . statement ; statements 
+statement ->  . dec_st 
+statement ->  . math_st 
+statement ->  . if_st 
+statement ->  . %empty 
+if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+dec_st ->  . dtype d_prod 
+
+I (108)
+statements -> %empty 
+statement -> %empty 
+
+I (109)
+statement -> dec_st 
+
+I (110)
+statement -> if_st 
+
+I (111)
+statement -> math_st 
+
+I (112)
+statements -> statement  . ; statements 
+
+I (113)
+statements -> statement ;  . statements 
+statements ->  . %empty 
+statements ->  . statement ; statements 
+statement ->  . dec_st 
+statement ->  . math_st 
+statement ->  . if_st 
+statement ->  . %empty 
+if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+dec_st ->  . dtype d_prod 
+
+I (122)
+statements -> statement ; statements 
+
+I (123)
+if_st -> if_token ( comp_st ) then_token { statements  . } CONT 
+
+I (124)
+if_st -> if_token ( comp_st ) then_token { statements }  . CONT 
+CONT ->  . else_token { statements } 
+CONT ->  . %empty 
+
+I (125)
+CONT -> else_token  . { statements } 
+
+I (126)
+CONT -> else_token {  . statements } 
+statements ->  . %empty 
+statements ->  . statement ; statements 
+statement ->  . dec_st 
+statement ->  . math_st 
+statement ->  . if_st 
+statement ->  . %empty 
+if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
+math_st ->  . ID equ VALUE 
+math_st ->  . ID equ math_st 
+dec_st ->  . dtype d_prod 
+
+I (135)
+CONT -> else_token { statements  . } 
+
+I (136)
+CONT -> else_token { statements } 
+
+I (137)
+CONT -> %empty 
+
+I (138)
+if_st -> if_token ( comp_st ) then_token { statements } CONT 
+
+I (144)
+St -> main ( ) { statements  . } 
+
+I (145)
+St -> main ( ) { statements } 
+
+I (146)
+S -> St 
+
