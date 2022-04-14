@@ -1,32 +1,25 @@
-35
+34
 
-S : St
-    ;
-St : "main" "(" ")" "{" statements "}"
-	;
+S : St ;
+St : "main" "(" ")" "{" statements "}" ;
 statements : %empty ;
 statements : statement ";" statements ;
 statement : dec_st ; 
 statement : math_st ;
 statement : io ;
 statement : if_st ; 
-statement : %empty ; 
 dec_st : "dtype" d_prod ;
 d_prod : d_nat ;
 d_prod : d_prod "," d_nat ;
 d_nat : "ID" ;
 d_nat : math_st ;
 math_st : "ID" "equ" VALUE ;
-math_st : "ID" "equ" math_st ;
 io : "input" inp ;
 io : "output" opt ;
-
 inp : "i_cas" "ID" ;
 inp : inp "i_cas" "ID" ;
 opt : "o_cas" VALUE ;
 opt : opt "o_cas" VALUE ;
-
-
 if_st : "if_token" "(" comp_st ")" "then_token" "{" statements "}" CONT ;
 CONT : "else_token" "{" statements "}" ;
 CONT : %empty ;
@@ -39,6 +32,41 @@ TERM : TERM "mulop" FAC ;
 TERM : FAC ;
 FAC : "ID" ;
 FAC : "NUMBER" ;
-FAC : "CHARACTER";
+FAC : "CHARACTER" ;
 FAC : "(" VALUE ")" ;
 
+33
+
+"main"
+"("
+")"
+"{"
+"if_token" 
+"("
+"ID" 
+"comp_op"
+"NUMBER"
+")"
+"then_token"
+"{"
+"ID"
+"equ"
+"ID"
+"addop"
+"NUMBER"
+";"
+"}"
+"else_token"
+"{"
+"output"
+"o_cas"
+"NUMBER"
+"mulop"
+"NUMBER"
+"addop"
+"NUMBER"
+";"
+"}"
+";"
+"}"
+$

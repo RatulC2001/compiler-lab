@@ -19,23 +19,17 @@ statement ->  . dec_st
 statement ->  . math_st 
 statement ->  . io 
 statement ->  . if_st 
-statement ->  . %empty 
 if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
 io ->  . input inp 
 io ->  . output opt 
 math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 dec_st ->  . dtype d_prod 
 
 I (5)
 math_st -> ID  . equ VALUE 
-math_st -> ID  . equ math_st 
 
 I (6)
 math_st -> ID equ  . VALUE 
-math_st -> ID equ  . math_st 
-math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 VALUE ->  . VALUE addop TERM 
 VALUE ->  . addop TERM 
 VALUE ->  . TERM 
@@ -43,28 +37,11 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
 I (7)
-FAC -> CHARACTER"  . FAC : ( VALUE ) 
-FAC ->  . ID 
-FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
-
-I (8)
-FAC -> ID  . 
-
-I (9)
-FAC -> NUMBER  . 
-
-I (10)
-FAC -> CHARACTER" FAC  . : ( VALUE ) 
-
-I (11)
-FAC -> CHARACTER" FAC :  . ( VALUE ) 
-
-I (12)
-FAC -> CHARACTER" FAC : (  . VALUE ) 
+FAC -> (  . VALUE ) 
 VALUE ->  . VALUE addop TERM 
 VALUE ->  . addop TERM 
 VALUE ->  . TERM 
@@ -72,105 +49,107 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (13)
+I (8)
+FAC -> CHARACTER  . 
+
+I (9)
+FAC -> ID  . 
+
+I (10)
+FAC -> NUMBER  . 
+
+I (11)
 VALUE -> addop  . TERM 
 TERM ->  . TERM mulop FAC 
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (14)
+I (12)
 TERM -> FAC  . 
 
-I (15)
+I (13)
 VALUE -> addop TERM  . 
 TERM -> TERM  . mulop FAC 
 
-I (16)
+I (14)
 TERM -> TERM mulop  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (17)
+I (15)
 TERM -> TERM mulop FAC  . 
 
-I (18)
+I (16)
 VALUE -> TERM  . 
 TERM -> TERM  . mulop FAC 
 
-I (19)
-FAC -> CHARACTER" FAC : ( VALUE  . ) 
+I (17)
+FAC -> ( VALUE  . ) 
 VALUE -> VALUE  . addop TERM 
 
-I (20)
-FAC -> CHARACTER" FAC : ( VALUE )  . 
+I (18)
+FAC -> ( VALUE )  . 
 
-I (21)
+I (19)
 VALUE -> VALUE addop  . TERM 
 TERM ->  . TERM mulop FAC 
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (22)
+I (20)
 VALUE -> VALUE addop TERM  . 
 TERM -> TERM  . mulop FAC 
 
-I (23)
-math_st -> ID  . equ VALUE 
-math_st -> ID  . equ math_st 
-FAC -> ID  . 
-
-I (24)
+I (21)
 math_st -> ID equ VALUE  . 
 VALUE -> VALUE  . addop TERM 
 
-I (25)
-math_st -> ID equ math_st  . 
-
-I (26)
+I (22)
 dec_st -> dtype  . d_prod 
 d_prod ->  . d_nat 
 d_prod ->  . d_prod , d_nat 
 d_nat ->  . ID 
 d_nat ->  . math_st 
 math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 
-I (27)
+I (23)
 d_nat -> ID  . 
 math_st -> ID  . equ VALUE 
-math_st -> ID  . equ math_st 
 
-I (28)
+I (24)
 d_prod -> d_nat  . 
 
-I (29)
+I (25)
 dec_st -> dtype d_prod  . 
 d_prod -> d_prod  . , d_nat 
 
-I (30)
+I (26)
 d_prod -> d_prod ,  . d_nat 
 d_nat ->  . ID 
 d_nat ->  . math_st 
 math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 
-I (31)
+I (27)
 d_prod -> d_prod , d_nat  . 
 
-I (32)
+I (28)
 d_nat -> math_st  . 
 
-I (33)
+I (29)
 if_st -> if_token  . ( comp_st ) then_token { statements } CONT 
 
-I (34)
+I (30)
 if_st -> if_token (  . comp_st ) then_token { statements } CONT 
 comp_st ->  . VALUE comp_op VALUE 
 comp_st ->  . ( comp_st ) r_o ( comp_st ) 
@@ -181,9 +160,26 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (35)
+I (31)
+comp_st -> (  . comp_st ) r_o ( comp_st ) 
+FAC -> (  . VALUE ) 
+VALUE ->  . VALUE addop TERM 
+VALUE ->  . addop TERM 
+VALUE ->  . TERM 
+TERM ->  . TERM mulop FAC 
+TERM ->  . FAC 
+FAC ->  . ID 
+FAC ->  . NUMBER 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
+comp_st ->  . VALUE comp_op VALUE 
+comp_st ->  . ( comp_st ) r_o ( comp_st ) 
+
+I (32)
+FAC -> (  . VALUE ) 
 comp_st -> (  . comp_st ) r_o ( comp_st ) 
 comp_st ->  . VALUE comp_op VALUE 
 comp_st ->  . ( comp_st ) r_o ( comp_st ) 
@@ -194,13 +190,15 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (36)
+I (33)
+FAC -> ( VALUE  . ) 
 comp_st -> VALUE  . comp_op VALUE 
 VALUE -> VALUE  . addop TERM 
 
-I (37)
+I (34)
 comp_st -> VALUE comp_op  . VALUE 
 VALUE ->  . VALUE addop TERM 
 VALUE ->  . addop TERM 
@@ -209,22 +207,23 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (38)
+I (35)
 comp_st -> VALUE comp_op VALUE  . 
 VALUE -> VALUE  . addop TERM 
 
-I (39)
+I (36)
 comp_st -> ( comp_st  . ) r_o ( comp_st ) 
 
-I (40)
+I (37)
 comp_st -> ( comp_st )  . r_o ( comp_st ) 
 
-I (41)
+I (38)
 comp_st -> ( comp_st ) r_o  . ( comp_st ) 
 
-I (42)
+I (39)
 comp_st -> ( comp_st ) r_o (  . comp_st ) 
 comp_st ->  . VALUE comp_op VALUE 
 comp_st ->  . ( comp_st ) r_o ( comp_st ) 
@@ -235,24 +234,34 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (43)
+I (40)
+comp_st -> VALUE  . comp_op VALUE 
+VALUE -> VALUE  . addop TERM 
+
+I (41)
 comp_st -> ( comp_st ) r_o ( comp_st  . ) 
 
-I (44)
+I (42)
 comp_st -> ( comp_st ) r_o ( comp_st )  . 
 
-I (45)
+I (43)
+FAC -> ( VALUE  . ) 
+VALUE -> VALUE  . addop TERM 
+comp_st -> VALUE  . comp_op VALUE 
+
+I (44)
 if_st -> if_token ( comp_st  . ) then_token { statements } CONT 
 
-I (46)
+I (45)
 if_st -> if_token ( comp_st )  . then_token { statements } CONT 
 
-I (47)
+I (46)
 if_st -> if_token ( comp_st ) then_token  . { statements } CONT 
 
-I (48)
+I (47)
 if_st -> if_token ( comp_st ) then_token {  . statements } CONT 
 statements ->  . %empty 
 statements ->  . statement ; statements 
@@ -260,41 +269,39 @@ statement ->  . dec_st
 statement ->  . math_st 
 statement ->  . io 
 statement ->  . if_st 
-statement ->  . %empty 
 if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
 io ->  . input inp 
 io ->  . output opt 
 math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 dec_st ->  . dtype d_prod 
 
-I (49)
+I (48)
 io -> input  . inp 
 inp ->  . i_cas ID 
 inp ->  . inp i_cas ID 
 
-I (50)
+I (49)
 inp -> i_cas  . ID 
 
-I (51)
+I (50)
 inp -> i_cas ID  . 
 
-I (52)
+I (51)
 io -> input inp  . 
 inp -> inp  . i_cas ID 
 
-I (53)
+I (52)
 inp -> inp i_cas  . ID 
 
-I (54)
+I (53)
 inp -> inp i_cas ID  . 
 
-I (55)
+I (54)
 io -> output  . opt 
 opt ->  . o_cas VALUE 
 opt ->  . opt o_cas VALUE 
 
-I (56)
+I (55)
 opt -> o_cas  . VALUE 
 VALUE ->  . VALUE addop TERM 
 VALUE ->  . addop TERM 
@@ -303,17 +310,18 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (57)
+I (56)
 opt -> o_cas VALUE  . 
 VALUE -> VALUE  . addop TERM 
 
-I (58)
+I (57)
 io -> output opt  . 
 opt -> opt  . o_cas VALUE 
 
-I (59)
+I (58)
 opt -> opt o_cas  . VALUE 
 VALUE ->  . VALUE addop TERM 
 VALUE ->  . addop TERM 
@@ -322,32 +330,32 @@ TERM ->  . TERM mulop FAC
 TERM ->  . FAC 
 FAC ->  . ID 
 FAC ->  . NUMBER 
-FAC ->  . CHARACTER" FAC : ( VALUE ) 
+FAC ->  . CHARACTER 
+FAC ->  . ( VALUE ) 
 
-I (60)
+I (59)
 opt -> opt o_cas VALUE  . 
 VALUE -> VALUE  . addop TERM 
 
-I (61)
+I (60)
 statements -> %empty  . 
-statement -> %empty  . 
 
-I (62)
+I (61)
 statement -> dec_st  . 
 
-I (63)
+I (62)
 statement -> if_st  . 
 
-I (64)
+I (63)
 statement -> io  . 
 
-I (65)
+I (64)
 statement -> math_st  . 
 
-I (66)
+I (65)
 statements -> statement  . ; statements 
 
-I (67)
+I (66)
 statements -> statement ;  . statements 
 statements ->  . %empty 
 statements ->  . statement ; statements 
@@ -355,29 +363,27 @@ statement ->  . dec_st
 statement ->  . math_st 
 statement ->  . io 
 statement ->  . if_st 
-statement ->  . %empty 
 if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
 io ->  . input inp 
 io ->  . output opt 
 math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 dec_st ->  . dtype d_prod 
 
-I (68)
+I (67)
 statements -> statement ; statements  . 
 
-I (69)
+I (68)
 if_st -> if_token ( comp_st ) then_token { statements  . } CONT 
 
-I (70)
+I (69)
 if_st -> if_token ( comp_st ) then_token { statements }  . CONT 
 CONT ->  . else_token { statements } 
 CONT ->  . %empty 
 
-I (71)
+I (70)
 CONT -> else_token  . { statements } 
 
-I (72)
+I (71)
 CONT -> else_token {  . statements } 
 statements ->  . %empty 
 statements ->  . statement ; statements 
@@ -385,32 +391,330 @@ statement ->  . dec_st
 statement ->  . math_st 
 statement ->  . io 
 statement ->  . if_st 
-statement ->  . %empty 
 if_st ->  . if_token ( comp_st ) then_token { statements } CONT 
 io ->  . input inp 
 io ->  . output opt 
 math_st ->  . ID equ VALUE 
-math_st ->  . ID equ math_st 
 dec_st ->  . dtype d_prod 
 
-I (73)
+I (72)
 CONT -> else_token { statements  . } 
 
-I (74)
+I (73)
 CONT -> else_token { statements }  . 
 
-I (75)
+I (74)
 CONT -> %empty  . 
 
-I (76)
+I (75)
 if_st -> if_token ( comp_st ) then_token { statements } CONT  . 
 
-I (77)
+I (76)
 St -> main ( ) { statements  . } 
 
-I (78)
+I (77)
 St -> main ( ) { statements }  . 
 
-I (79)
+I (78)
 S -> St  . 
+
+STACK : 0 
+SYMBOLS : 
+main ( ) { if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 
+SYMBOLS : main 
+( ) { if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 
+SYMBOLS : main ( 
+) { if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 
+SYMBOLS : main ( ) 
+{ if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 
+SYMBOLS : main ( ) { 
+if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 
+SYMBOLS : main ( ) { if_token 
+( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 
+SYMBOLS : main ( ) { if_token ( 
+ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 9 
+SYMBOLS : main ( ) { if_token ( ID 
+comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 12 
+SYMBOLS : main ( ) { if_token ( FAC 
+comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 16 
+SYMBOLS : main ( ) { if_token ( TERM 
+comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 40 
+SYMBOLS : main ( ) { if_token ( VALUE 
+comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 40 34 
+SYMBOLS : main ( ) { if_token ( VALUE comp_op 
+NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 40 34 10 
+SYMBOLS : main ( ) { if_token ( VALUE comp_op NUMBER 
+) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 40 34 12 
+SYMBOLS : main ( ) { if_token ( VALUE comp_op FAC 
+) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 40 34 16 
+SYMBOLS : main ( ) { if_token ( VALUE comp_op TERM 
+) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 40 34 35 
+SYMBOLS : main ( ) { if_token ( VALUE comp_op VALUE 
+) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 
+SYMBOLS : main ( ) { if_token ( comp_st 
+) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 
+SYMBOLS : main ( ) { if_token ( comp_st ) 
+then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token 
+{ ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { 
+ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID 
+equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ 
+ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 9 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ ID 
+addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 12 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ FAC 
+addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 16 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ TERM 
+addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 21 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ VALUE 
+addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 21 19 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ VALUE addop 
+NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 21 19 10 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ VALUE addop NUMBER 
+; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 21 19 12 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ VALUE addop FAC 
+; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 21 19 20 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ VALUE addop TERM 
+; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 5 6 21 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { ID equ VALUE 
+; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 64 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { math_st 
+; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 65 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statement 
+; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 65 66 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statement ; 
+} else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 65 66 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statement ; 
+%empty } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 65 66 60 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statement ; %empty 
+} else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 65 66 67 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statement ; statements 
+} else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements 
+} else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } 
+else_token { output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token 
+{ output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { 
+output o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output 
+o_cas NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas 
+NUMBER mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 10 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas NUMBER 
+mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 12 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas FAC 
+mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 16 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM 
+mulop NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 16 14 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM mulop 
+NUMBER addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 16 14 10 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM mulop NUMBER 
+addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 16 14 15 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM mulop FAC 
+addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 16 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM 
+addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 56 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE 
+addop NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 56 19 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop 
+NUMBER ; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 56 19 10 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop NUMBER 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 56 19 12 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop FAC 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 56 19 20 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop TERM 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 55 56 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 54 57 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { output opt 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 63 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { io 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 65 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statement 
+; } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 65 66 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statement ; 
+} ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 65 66 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statement ; 
+%empty } ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 65 66 60 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statement ; %empty 
+} ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 65 66 67 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statement ; statements 
+} ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 72 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statements 
+} ; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 70 71 72 73 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } else_token { statements } 
+; } $ 
+
+STACK : 0 1 2 3 4 29 30 44 45 46 47 68 69 75 
+SYMBOLS : main ( ) { if_token ( comp_st ) then_token { statements } CONT 
+; } $ 
+
+STACK : 0 1 2 3 4 62 
+SYMBOLS : main ( ) { if_st 
+; } $ 
+
+STACK : 0 1 2 3 4 65 
+SYMBOLS : main ( ) { statement 
+; } $ 
+
+STACK : 0 1 2 3 4 65 66 
+SYMBOLS : main ( ) { statement ; 
+} $ 
+
+STACK : 0 1 2 3 4 65 66 
+SYMBOLS : main ( ) { statement ; 
+%empty } $ 
+
+STACK : 0 1 2 3 4 65 66 60 
+SYMBOLS : main ( ) { statement ; %empty 
+} $ 
+
+STACK : 0 1 2 3 4 65 66 67 
+SYMBOLS : main ( ) { statement ; statements 
+} $ 
+
+STACK : 0 1 2 3 4 76 
+SYMBOLS : main ( ) { statements 
+} $ 
+
+STACK : 0 1 2 3 4 76 77 
+SYMBOLS : main ( ) { statements } 
+$ 
+
+STACK : 0 78 
+SYMBOLS : St 
+$ 
 

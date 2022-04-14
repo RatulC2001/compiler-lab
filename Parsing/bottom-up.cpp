@@ -71,7 +71,7 @@ struct sym
             ret.push_back(sym("\")\""));
             ret.push_back(sym("\"o_cas\""));
             ret.push_back(sym("\"comp_op\""));
-            ret.push_back(sym("\"add_op\""));
+            ret.push_back(sym("\"addop\""));
         }
         else if(s == "inp")
         {
@@ -98,8 +98,8 @@ struct sym
             ret.push_back(sym("\")\""));
             ret.push_back(sym("\"o_cas\""));
             ret.push_back(sym("\"comp_op\""));
-            ret.push_back(sym("\"add_op\""));
-            ret.push_back(sym("\"mul_op\""));
+            ret.push_back(sym("\"addop\""));
+            ret.push_back(sym("\"mulop\""));
         }
         else if(s == "FAC")
         {
@@ -108,8 +108,8 @@ struct sym
             ret.push_back(sym("\")\""));
             ret.push_back(sym("\"o_cas\""));
             ret.push_back(sym("\"comp_op\""));
-            ret.push_back(sym("\"add_op\""));
-            ret.push_back(sym("\"mul_op\""));
+            ret.push_back(sym("\"addop\""));
+            ret.push_back(sym("\"mulop\""));
         }
 
         return ret;
@@ -361,6 +361,32 @@ void generate(item_set is)
     }
 }
 
+void printst(stack <int> st)
+{
+    if (st.empty()) return;
+    else
+    {
+        int val = st.top();
+        st.pop();
+        printst(st);
+        cout << val << " ";
+    }
+}
+
+void repr(stack <int> st, vector <sym> &symbols, vector <sym> &term_list)
+{
+    cout << "STACK : ";
+    printst(st);
+    cout << endl;
+    cout << "SYMBOLS : ";
+    for(sym s : symbols)
+    cout << s << " ";
+    cout << endl;
+    for(int i = (int)(term_list.size()) - 1; i >= 0; i --) cout << term_list[i] << " ";
+    cout << endl;
+    cout << endl;
+}
+
 signed main()
 {
     freopen("input.txt", "r", stdin);
@@ -403,6 +429,121 @@ signed main()
         cout << "I (" << item.id << ")" << endl;
         cout << item << endl;
     }
+
+    int term_cnt;
+    cin >> term_cnt;
+
+    vector <sym> term_list;
+    for(int i = 0; i < term_cnt; i ++)
+    {
+        string str;
+        cin >> str;
+        sym s(str);
+        term_list.push_back(s);
+    }
+
+    reverse(term_list.begin(), term_list.end());
+
+    stack <int> st;
+    st.push(0);
+
+    vector <sym> symbols;
+
+    repr(st, symbols, term_list);
+
+    for(int itr = 0; itr < 200 ; itr ++)
+    {
+        if((int)(term_list.size()) == 1 && st.top() + 1 == (int)(item_list.size())) break;
+
+        sym curr = *term_list.rbegin();
+        int pos = st.top();
+
+        vector <sym> trans = nextsyms(item_list[pos]);
+        bool found = false;
+        bool shift_to = false;
+        for(int i = 0; i < (int)(trans.size()); i ++) if(trans[i] == curr) found = true;
+
+        for(production prod : item_list[pos].prod_list)
+        {
+            if(prod.dot_loc != prod.count_rhs())
+            {
+                if(prod.rhs[prod.dot_loc] == sym("%empty"))
+                {
+                    shift_to = true;
+                }
+            }
+        }
+
+        if(found)
+        {
+            // cout << "IN1" << endl;
+            int next_item;
+            for(int i = 0; i < (int)(adj[pos].size()); i ++) 
+            {
+                if(adj[pos][i].second == curr)
+                {
+                    next_item = adj[pos][i].first;
+                }
+            }
+
+            term_list.pop_back();
+            symbols.push_back(curr);
+            st.push(next_item);
+        }
+        else if (shift_to)
+        {
+            // cout << "IN2" << endl;
+            term_list.push_back(sym("%empty"));
+        }
+        else
+        {
+            // cout << "IN3" << endl;
+            production req;
+            for(production prod : item_list[pos].prod_list)
+            {
+                if(prod.dot_loc == prod.count_rhs())
+                {
+                    vector <sym> followset = prod.lhs.follow();
+                    bool found = false;
+
+                    if(curr == sym("$")) found = true;
+
+                    for(sym s : followset)
+                    {
+                        if(s == curr)
+                        {
+                            found = true;
+                        }
+                    }
+
+                    if(found)
+                    {
+                        req = prod;
+                        break;
+                    }
+                }
+            }
+
+            for(int i = 0; i < req.count_rhs(); i ++) st.pop(), symbols.pop_back();
+
+            pos = st.top();
+
+            int next_item;
+            for(int i = 0; i < (int)(adj[pos].size()); i ++) 
+            {
+                if(adj[pos][i].second == req.lhs)
+                {
+                    next_item = adj[pos][i].first;
+                }
+            }
+
+            st.push(next_item);
+            symbols.push_back(req.lhs);
+        }
+
+        repr(st, symbols, term_list);
+    }
+    
 
     return 0;
 }
