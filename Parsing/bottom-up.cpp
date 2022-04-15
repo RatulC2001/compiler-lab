@@ -3,12 +3,14 @@
 #include <vector>
 #include <stack>
 #include <set>
+#include <stdio.h>
 
 using namespace std;
 
 struct sym
 {
     string s;
+    int id;
     
     sym()
     {
@@ -248,10 +250,9 @@ struct item_set
             production p = st.top();
             st.pop();
 
-            sym start = p.rhs[p.dot_loc];
-
             if(p.can_extend())
             {
+                sym start = p.rhs[p.dot_loc];
                 for(auto prod : productions)
                 {
                     if(prod.lhs == start)
@@ -388,6 +389,10 @@ void repr(stack <int> st, vector <sym> &symbols, vector <sym> &term_list)
     cout << endl;
 }
 
+vector <sym> globalsymbols;
+vector <int> graph[1000];
+int symid = 0;
+
 signed main()
 {
     freopen("input.txt", "r", stdin);
@@ -440,6 +445,9 @@ signed main()
         string str;
         cin >> str;
         sym s(str);
+        s.id = symid;
+        symid ++;
+        globalsymbols.push_back(s);
         term_list.push_back(s);
     }
 
@@ -494,7 +502,11 @@ signed main()
         else if (shift_to)
         {
             // cout << "IN2" << endl;
-            term_list.push_back(sym("%empty"));
+            sym addsym("%empty");
+            addsym.id = symid;
+            symid ++;
+            globalsymbols.push_back(addsym);
+            term_list.push_back(addsym);
         }
         else
         {
@@ -525,7 +537,23 @@ signed main()
                 }
             }
 
-            for(int i = 0; i < req.count_rhs(); i ++) st.pop(), symbols.pop_back();
+            sym new_sym(req.lhs.s);
+            new_sym.id = symid;
+            symid ++;
+            globalsymbols.push_back(new_sym);
+
+            vector <int> to_append; 
+
+            for(int i = 0; i < req.count_rhs(); i ++) 
+            {
+                st.pop();
+                sym curr_sym = *symbols.rbegin();
+                to_append.push_back(curr_sym.id);
+                symbols.pop_back();
+            }
+
+            reverse(to_append.begin(), to_append.end());
+            for(int idx : to_append) graph[new_sym.id].push_back(idx);
 
             pos = st.top();
 
@@ -539,12 +567,30 @@ signed main()
             }
 
             st.push(next_item);
-            symbols.push_back(req.lhs);
+            symbols.push_back(new_sym);
         }
 
         repr(st, symbols, term_list);
     }
     
+    cout << endl;
+
+    FILE *fp;
+    fp = fopen("graph.md", "w");
+
+    fprintf(fp, "```mermaid\ngraph TD\n");
+
+    for(int i = 0; i < 999; i ++)
+    {
+        for (int j : graph[i])
+        {
+            fprintf(fp, "%d(%s) --> %d(%s);\n", i, globalsymbols[i].s.c_str(), j, globalsymbols[j].s.c_str());
+        }
+    }
+
+    fprintf(fp, "```\n");
+
+    fclose(fp);
 
     return 0;
 }

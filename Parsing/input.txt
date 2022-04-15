@@ -35,12 +35,23 @@ FAC : "NUMBER" ;
 FAC : "CHARACTER" ;
 FAC : "(" VALUE ")" ;
 
-35
+46
 
 "main"
 "("
 ")"
 "{"
+"dtype"
+"ID"
+","
+"ID"
+"equ"
+"("
+"NUMBER"
+"mulop"
+"NUMBER"
+")"
+";"
 "if_token" 
 "("
 "ID" 
