@@ -460,7 +460,7 @@ signed main()
 
     repr(st, symbols, term_list);
 
-    for(int itr = 0; itr < 200 ; itr ++)
+    for(int itr = 0; itr < 500 ; itr ++)
     {
         if((int)(term_list.size()) == 1 && st.top() + 1 == (int)(item_list.size())) break;
 
@@ -512,6 +512,8 @@ signed main()
         {
             // cout << "IN3" << endl;
             production req;
+            bool no_production = true;
+            int end_count = 0;
             for(production prod : item_list[pos].prod_list)
             {
                 if(prod.dot_loc == prod.count_rhs())
@@ -519,7 +521,7 @@ signed main()
                     vector <sym> followset = prod.lhs.follow();
                     bool found = false;
 
-                    if(curr == sym("$")) found = true;
+                    if(curr == sym("$")) found = true, end_count += 1;
 
                     for(sym s : followset)
                     {
@@ -532,9 +534,17 @@ signed main()
                     if(found)
                     {
                         req = prod;
-                        break;
+                        no_production = false;
                     }
                 }
+            }
+
+            if(end_count > 1) no_production = true;
+
+            if(no_production)
+            {
+                cout << "ERROR" << endl;
+                exit(0);
             }
 
             sym new_sym(req.lhs.s);

@@ -420,414 +420,458 @@ S -> St  .
 
 STACK : 0 
 SYMBOLS : 
-INPUT : main ( ) { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : main ( ) { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 
 SYMBOLS : main 
-INPUT : ( ) { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ( ) { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 
 SYMBOLS : main ( 
-INPUT : ) { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 
 SYMBOLS : main ( ) 
-INPUT : { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : { dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 
 SYMBOLS : main ( ) { 
-INPUT : dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : dtype ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 
 SYMBOLS : main ( ) { dtype 
-INPUT : ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ID , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 23 
 SYMBOLS : main ( ) { dtype ID 
-INPUT : , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 24 
 SYMBOLS : main ( ) { dtype d_nat 
-INPUT : , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 
 SYMBOLS : main ( ) { dtype d_prod 
-INPUT : , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : , ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 
 SYMBOLS : main ( ) { dtype d_prod , 
-INPUT : ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ID equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 
 SYMBOLS : main ( ) { dtype d_prod , ID 
-INPUT : equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : equ ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 
 SYMBOLS : main ( ) { dtype d_prod , ID equ 
-INPUT : ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ( NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( 
-INPUT : NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 10 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( NUMBER 
-INPUT : mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 12 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( FAC 
-INPUT : mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 16 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( TERM 
-INPUT : mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : mulop NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 16 14 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( TERM mulop 
-INPUT : NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 16 14 10 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( TERM mulop NUMBER 
-INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 16 14 15 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( TERM mulop FAC 
-INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 16 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( TERM 
-INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 17 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( VALUE 
-INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 7 17 18 
 SYMBOLS : main ( ) { dtype d_prod , ID equ ( VALUE ) 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 12 
 SYMBOLS : main ( ) { dtype d_prod , ID equ FAC 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 16 
 SYMBOLS : main ( ) { dtype d_prod , ID equ TERM 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 23 6 21 
 SYMBOLS : main ( ) { dtype d_prod , ID equ VALUE 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 28 
 SYMBOLS : main ( ) { dtype d_prod , math_st 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 26 27 
 SYMBOLS : main ( ) { dtype d_prod , d_nat 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 22 25 
 SYMBOLS : main ( ) { dtype d_prod 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 61 
 SYMBOLS : main ( ) { dec_st 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 
 SYMBOLS : main ( ) { statement 
-INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 
 SYMBOLS : main ( ) { statement ; 
-INPUT : if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : if_token ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 
 SYMBOLS : main ( ) { statement ; if_token 
-INPUT : ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ( ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 
 SYMBOLS : main ( ) { statement ; if_token ( 
-INPUT : ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ID comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 9 
 SYMBOLS : main ( ) { statement ; if_token ( ID 
-INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 12 
 SYMBOLS : main ( ) { statement ; if_token ( FAC 
-INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 16 
 SYMBOLS : main ( ) { statement ; if_token ( TERM 
-INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 40 
 SYMBOLS : main ( ) { statement ; if_token ( VALUE 
-INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : comp_op NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 40 34 
 SYMBOLS : main ( ) { statement ; if_token ( VALUE comp_op 
-INPUT : NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 40 34 10 
 SYMBOLS : main ( ) { statement ; if_token ( VALUE comp_op NUMBER 
-INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 40 34 12 
 SYMBOLS : main ( ) { statement ; if_token ( VALUE comp_op FAC 
-INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 40 34 16 
 SYMBOLS : main ( ) { statement ; if_token ( VALUE comp_op TERM 
-INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 40 34 35 
 SYMBOLS : main ( ) { statement ; if_token ( VALUE comp_op VALUE 
-INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st 
-INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ) then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) 
-INPUT : then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : then_token { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token 
-INPUT : { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : { ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { 
-INPUT : ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ID equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID 
-INPUT : equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : equ ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ 
-INPUT : ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ID addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 9 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ ID 
-INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 12 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ FAC 
-INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 16 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ TERM 
-INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 21 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ VALUE 
-INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 21 19 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ VALUE addop 
-INPUT : NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 21 19 10 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ VALUE addop NUMBER 
-INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 21 19 12 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ VALUE addop FAC 
-INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 21 19 20 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ VALUE addop TERM 
-INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 5 6 21 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { ID equ VALUE 
-INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 64 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { math_st 
-INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 65 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statement 
-INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : ; } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 65 66 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statement ; 
-INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 65 66 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statement ; 
-INPUT : %empty } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : %empty } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 65 66 60 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statement ; %empty 
-INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 65 66 67 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statement ; statements 
-INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements 
-INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : } else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } 
-INPUT : else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : else_token { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token 
-INPUT : { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : { output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { 
-INPUT : output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : output o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output 
-INPUT : o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : o_cas NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas 
-INPUT : NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 10 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas NUMBER 
-INPUT : mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 12 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas FAC 
-INPUT : mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 16 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM 
-INPUT : mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : mulop NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 16 14 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM mulop 
-INPUT : NUMBER addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 16 14 10 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM mulop NUMBER 
-INPUT : addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 16 14 15 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM mulop FAC 
-INPUT : addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 16 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas TERM 
-INPUT : addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 56 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE 
-INPUT : addop NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : addop NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 56 19 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop 
-INPUT : NUMBER o_cas CHARACTER ; } ; } $ 
+INPUT : NUMBER o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 56 19 10 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop NUMBER 
-INPUT : o_cas CHARACTER ; } ; } $ 
+INPUT : o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 56 19 12 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop FAC 
-INPUT : o_cas CHARACTER ; } ; } $ 
+INPUT : o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 56 19 20 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE addop TERM 
-INPUT : o_cas CHARACTER ; } ; } $ 
+INPUT : o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 55 56 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output o_cas VALUE 
-INPUT : o_cas CHARACTER ; } ; } $ 
+INPUT : o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt 
-INPUT : o_cas CHARACTER ; } ; } $ 
+INPUT : o_cas CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 58 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt o_cas 
-INPUT : CHARACTER ; } ; } $ 
+INPUT : CHARACTER ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 58 8 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt o_cas CHARACTER 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 58 12 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt o_cas FAC 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 58 16 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt o_cas TERM 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 58 59 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt o_cas VALUE 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 54 57 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { output opt 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 63 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { io 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 65 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statement 
-INPUT : ; } ; } $ 
+INPUT : ; } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 65 66 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statement ; 
-INPUT : } ; } $ 
+INPUT : } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 65 66 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statement ; 
-INPUT : %empty } ; } $ 
+INPUT : %empty } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 65 66 60 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statement ; %empty 
-INPUT : } ; } $ 
+INPUT : } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 65 66 67 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statement ; statements 
-INPUT : } ; } $ 
+INPUT : } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 72 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statements 
-INPUT : } ; } $ 
+INPUT : } ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 70 71 72 73 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } else_token { statements } 
-INPUT : ; } $ 
+INPUT : ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 29 30 44 45 46 47 68 69 75 
 SYMBOLS : main ( ) { statement ; if_token ( comp_st ) then_token { statements } CONT 
-INPUT : ; } $ 
+INPUT : ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 62 
 SYMBOLS : main ( ) { statement ; if_st 
-INPUT : ; } $ 
+INPUT : ; output o_cas ID ; } $ 
 
 STACK : 0 1 2 3 4 65 66 65 
 SYMBOLS : main ( ) { statement ; statement 
+INPUT : ; output o_cas ID ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 
+SYMBOLS : main ( ) { statement ; statement ; 
+INPUT : output o_cas ID ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 54 
+SYMBOLS : main ( ) { statement ; statement ; output 
+INPUT : o_cas ID ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 54 55 
+SYMBOLS : main ( ) { statement ; statement ; output o_cas 
+INPUT : ID ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 54 55 9 
+SYMBOLS : main ( ) { statement ; statement ; output o_cas ID 
 INPUT : ; } $ 
 
-STACK : 0 1 2 3 4 65 66 65 66 
-SYMBOLS : main ( ) { statement ; statement ; 
+STACK : 0 1 2 3 4 65 66 65 66 54 55 12 
+SYMBOLS : main ( ) { statement ; statement ; output o_cas FAC 
+INPUT : ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 54 55 16 
+SYMBOLS : main ( ) { statement ; statement ; output o_cas TERM 
+INPUT : ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 54 55 56 
+SYMBOLS : main ( ) { statement ; statement ; output o_cas VALUE 
+INPUT : ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 54 57 
+SYMBOLS : main ( ) { statement ; statement ; output opt 
+INPUT : ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 63 
+SYMBOLS : main ( ) { statement ; statement ; io 
+INPUT : ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 65 
+SYMBOLS : main ( ) { statement ; statement ; statement 
+INPUT : ; } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 65 66 
+SYMBOLS : main ( ) { statement ; statement ; statement ; 
 INPUT : } $ 
 
-STACK : 0 1 2 3 4 65 66 65 66 
-SYMBOLS : main ( ) { statement ; statement ; 
+STACK : 0 1 2 3 4 65 66 65 66 65 66 
+SYMBOLS : main ( ) { statement ; statement ; statement ; 
 INPUT : %empty } $ 
 
-STACK : 0 1 2 3 4 65 66 65 66 60 
-SYMBOLS : main ( ) { statement ; statement ; %empty 
+STACK : 0 1 2 3 4 65 66 65 66 65 66 60 
+SYMBOLS : main ( ) { statement ; statement ; statement ; %empty 
+INPUT : } $ 
+
+STACK : 0 1 2 3 4 65 66 65 66 65 66 67 
+SYMBOLS : main ( ) { statement ; statement ; statement ; statements 
 INPUT : } $ 
 
 STACK : 0 1 2 3 4 65 66 65 66 67 

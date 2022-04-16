@@ -35,7 +35,7 @@ FAC : "NUMBER" ;
 FAC : "CHARACTER" ;
 FAC : "(" VALUE ")" ;
 
-46
+50
 
 "main"
 "("
@@ -80,6 +80,10 @@ FAC : "(" VALUE ")" ;
 "CHARACTER"
 ";"
 "}"
+";"
+"output"
+"o_cas"
+"ID"
 ";"
 "}"
 $
