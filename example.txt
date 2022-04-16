@@ -4,16 +4,16 @@ main()
     real x=2.3, y=4.5;
     if(x > 20) then
     {
-        cout << "Hello" ;
+        cout << 'Y' ;
         x = 20;
     }
     else
     {
         cin >> x;
-        cout << "NOOOOOO";
+        cout << 'N';
         if (x > 10) then
         {
-            cout << "YESSSSS";
+            cout << 'Y';
         };
     };
     x = 20;
